@@ -8,7 +8,7 @@ class SelectedPageProvider extends ChangeNotifier{
     this.selectedPage= 0
   });
 
-  void changePage(newValue){
+  void changePage(int newValue){
     selectedPage = newValue;
     notifyListeners();
 

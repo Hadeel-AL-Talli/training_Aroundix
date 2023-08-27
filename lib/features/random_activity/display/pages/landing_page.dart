@@ -29,20 +29,26 @@ class LandingPage extends StatelessWidget {
 
         children: [
 
-          Container(
+          // Container(
 
-            decoration: const BoxDecoration(
+          //   decoration: const BoxDecoration(
 
-              image: DecorationImage(
+          //     image: DecorationImage(
 
-                fit: BoxFit.cover,
+          //       fit: BoxFit.cover,
 
-                image: AssetImage("images/water_bg.jpeg"),
+          //       image: AssetImage('images/water_bg.jpeg'),
 
-              ),
+          //     ),
 
-            ),
+          //   ),
 
+          // ),
+          SizedBox(
+            width: double.infinity,
+            child: Image.asset('images/water_bg.jpeg', fit: BoxFit.cover,alignment: Alignment.topCenter,),
+            
+            
           ),
 
           Column(
@@ -100,7 +106,7 @@ class LandingPage extends StatelessWidget {
                 iconColor: Colors.orangeAccent,
 
                 callback: () {
-
+                  print('clicked');
                    Provider.of<RandomActivityProvider>(context, listen: false)
 
                       .eitherFailureOrActivity();

@@ -49,7 +49,7 @@ class RandomActivityPage extends StatelessWidget {
 
             callback: () {
 
-             
+             print('clicked');
 
               Provider.of<RandomActivityProvider>(context, listen: false)
 

@@ -66,7 +66,7 @@ class RandomActivityWidget extends StatelessWidget {
 
               image: AssetImage(
 
-                'images/water_bg.jpg',
+                'images/water_bg.jpeg',
 
               ),
 

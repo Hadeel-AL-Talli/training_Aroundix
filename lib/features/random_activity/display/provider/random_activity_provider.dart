@@ -2,6 +2,7 @@ import 'package:clean_architecture/features/random_activity/data/datasource/rand
 import 'package:clean_architecture/features/random_activity/data/datasource/random_activity_remote_data_source.dart';
 import 'package:clean_architecture/features/random_activity/data/repositories/random_activity_repository_implementation.dart';
 import 'package:clean_architecture/features/random_activity/domain/entities/random_activity.dart';
+import 'package:clean_architecture/features/random_activity/domain/usecases/get_random_activity.dart';
 import 'package:data_connection_checker_tv/data_connection_checker.dart';
 
 import 'package:dio/dio.dart';
@@ -26,14 +27,14 @@ class RandomActivityProvider extends ChangeNotifier{
   RandomActivityProvider({this.randomActivity, this.failure});
 
 
-  eitherFailureOrActivity()async{
+  void eitherFailureOrActivity()async{
     RandomActivityRepositoryImpl repository  = RandomActivityRepositoryImpl(
       remoteDataSource: RandomActivityRemoteDataSourceImp(dio:Dio()), 
       localDataSource: RandomActivityLocalDataSourceImpl(sharedPreferences: await SharedPreferences.getInstance()), 
       networkInfo: NetworkInfoImpl(DataConnectionChecker()));
 
-      final failureOrActivity = await repository.getRandomActivity();
-      failureOrActivity!.fold(
+      final failureOrActivity = await GetRandomActivity(repository).call(NoParams());
+      failureOrActivity?.fold(
         (newFailure){
           randomActivity = null;
           failure = newFailure;

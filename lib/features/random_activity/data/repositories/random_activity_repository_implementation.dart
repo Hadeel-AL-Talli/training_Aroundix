@@ -29,7 +29,7 @@ class RandomActivityRepositoryImpl implements RandomActivityRepository{
       try{
        final remoteActivity = await remoteDataSource.getRandomActivity();
        localDataSource.cacheRandomActivity(remoteActivity);
-       return Right(await remoteDataSource.getRandomActivity());
+       return Right(remoteActivity);
 
       }on ServerException{
      return Left(ServerFailure(errorMessage: 'this is a server exception'));
