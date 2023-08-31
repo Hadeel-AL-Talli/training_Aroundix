@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-
+ValueKey customButtonKey = const ValueKey('custom_button_key');
 class CustomElevatedButtonWidget extends StatelessWidget {
 
   const CustomElevatedButtonWidget({
@@ -38,6 +38,7 @@ class CustomElevatedButtonWidget extends StatelessWidget {
 
       child: ElevatedButton.icon(
 
+key: customButtonKey,
         style: ElevatedButton.styleFrom(
 
             primary: buttonColor,
